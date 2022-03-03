@@ -105,14 +105,9 @@ int main(void)
 
 	//bước 1: khai báo vertex input (vertex data)
 	GLfloat vertices[] = {
-		// tam giac 1
-		-0.8f,-0.4f,0.0f,  //bottom-left
-		0.0f,-0.4f,0.0f,   //bottom right
-		-0.4f,0.4f,0.0f,    //Top Left 
-		// tam giac 2
-		0.0f,-0.4f,0.0f,  //bottom-left
-		0.8f,-0.4f,0.0f,   //bottom right
-		0.4f,0.4f,0.0f,    //Top Left
+		-0.5f, -0.5f, 0.0f,  //bottom-left
+		0.5f, -0.5f, 0.0f,   //bottom right
+		0.0f, 0.5f, 0.0f //Top Left 
 
 	};
 	//Bước 2: Khởi tạo VBO, VAO
@@ -151,7 +146,7 @@ int main(void)
 		glUseProgram(shaderProgram);
 
 		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 6);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
 		glBindVertexArray(0);
 
 		///swap
