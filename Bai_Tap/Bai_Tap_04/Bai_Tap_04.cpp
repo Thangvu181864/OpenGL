@@ -17,15 +17,18 @@ const GLuint WIDTH = 800, HEIGHT = 600;
 //bước 0.0: chuẩn bị shader
 const GLchar* vertexShaderSource = "#version 330 core\n"
 "layout (location=0) in vec3 position;\n"
+"out vec4 vertexColor;\n"
 "void main()\n"
 "{\n"
 "gl_Position= vec4(position.x,position.y,position.z,1);\n"
+"vertexColor=vec4(position.x,position.y,position.z,1);\n"
 "}\0";
 const GLchar* fragmentShaderSource = "#version 330 core\n"
+"in vec4 vertexColor;\n"
 "out vec4 color;\n"
 "void main()\n"
 "{\n"
-"color= vec4(0.0f,1.0f,1.0f,1.0f);\n"
+"color= vertexColor;\n"
 "}\0";
 
 int main(void)
@@ -143,7 +146,7 @@ int main(void)
 	glBindVertexArray(0);
 
 
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	//Game Loop
 	while (!glfwWindowShouldClose(window))
 	{
