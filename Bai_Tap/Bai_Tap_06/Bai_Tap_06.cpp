@@ -24,10 +24,10 @@ const GLchar* vertexShaderSource = "#version 330 core\n"
 "}\0";
 const GLchar* fragmentShaderSource = "#version 330 core\n"
 "out vec4 color;\n"
-"uniform vec4 outcolor;\n"
+"uniform vec4 ourcolor;\n"
 "void main()\n"
 "{\n"
-"color= outcolor;\n"
+"color= ourcolor;\n"
 "}\0";
 
 int main(void)
@@ -148,7 +148,7 @@ int main(void)
 		glUseProgram(shaderProgram);
 
 		glBindVertexArray(VAO);
-		GLint vertexColorLocation = glGetUniformLocation(shaderProgram, "outcolor");
+		GLint vertexColorLocation = glGetUniformLocation(shaderProgram, "ourcolor");
 		glUniform4f(vertexColorLocation,COLOR[0], COLOR[1], COLOR[2], COLOR[3]);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		glBindVertexArray(0);
