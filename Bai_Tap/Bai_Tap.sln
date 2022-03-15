@@ -15,11 +15,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bai_Tap_05", "Bai_Tap_05\Ba
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bai_Tap_06", "Bai_Tap_06\Bai_Tap_06.vcxproj", "{DB377B95-07BE-4AD3-B12F-78CD89A7E5F8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bai_Tap_7", "Bai_Tap_7\Bai_Tap_7.vcxproj", "{39BFC1A0-0E5F-405E-BD20-6474E83D5FA2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bai_Tap_07", "Bai_Tap_07\Bai_Tap_07.vcxproj", "{39BFC1A0-0E5F-405E-BD20-6474E83D5FA2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bai_Tap_8", "Bai_Tap_8\Bai_Tap_8.vcxproj", "{8A09F998-0C5B-4981-A25F-2208405C9904}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bai_Tap_08", "Bai_Tap_08\Bai_Tap_08.vcxproj", "{8A09F998-0C5B-4981-A25F-2208405C9904}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bai_Tap_9", "Bai_Tap_9\Bai_Tap_9.vcxproj", "{9B376034-8C56-4934-B9F1-FD3022950DD5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bai_Tap_09", "Bai_Tap_09\Bai_Tap_09.vcxproj", "{9B376034-8C56-4934-B9F1-FD3022950DD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

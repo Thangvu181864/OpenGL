@@ -1,9 +1,0 @@
-﻿  Bai_Tap_9.cpp
-D:\Slides\2021-2022\Do_hoa_may_tinh\OpenGL\Bai_Tap\Bai_Tap_9\Shader.h(8,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-D:\Slides\2021-2022\Do_hoa_may_tinh\OpenGL\Bai_Tap\Bai_Tap_9\Shader.h(46,34): warning C4101: 'e': unreferenced local variable
-  Generating code
-  1 of 204 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  Bai_Tap_9.vcxproj -> D:\Slides\2021-2022\Do_hoa_may_tinh\OpenGL\Bai_Tap\x64\Release\Bai_Tap_9.exe
