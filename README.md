@@ -25,4 +25,5 @@ hình trong vertex shader , sử dụng giá trị offset.
 Bài 9: Xuất Output vertex position cho fragment shader bằng cách sử dụng từ khóa out và đặt màu của fragment shader bằng với vị trí đỉnh này (xem cách các giá trị vị trí đỉnh
 được nội suy trên tam giác). Hãy thử trả lời câu hỏi sau: tại sao phía dưới bên trái
 của tam giác lại có màu đen ?.
+Bài 10: Vẽ hình chữ nhật sử dụng EBO, Texture và màu sắc bốn đỉnh khác nhau
 ```

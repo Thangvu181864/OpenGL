@@ -14,19 +14,27 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Shader">
-      <UniqueIdentifier>{39bef5a1-25e7-41df-b6cf-2c08252740af}</UniqueIdentifier>
+      <UniqueIdentifier>{9f468880-99fc-4f0f-9b1d-107448227027}</UniqueIdentifier>
     </Filter>
     <Filter Include="Shader class">
-      <UniqueIdentifier>{93cfa53b-7c41-42eb-94c8-d6dd946ddc45}</UniqueIdentifier>
+      <UniqueIdentifier>{ae978eb5-4470-44cd-b7fa-e807837b28e9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bai_Tap_10.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Shader.cpp">
       <Filter>Shader class</Filter>
     </ClCompile>
-    <ClCompile Include="Bai_Tap_09.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Shader.h">
+      <Filter>Shader class</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="fShader.frag">
@@ -37,8 +45,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Shader.h">
-      <Filter>Shader class</Filter>
-    </ClInclude>
+    <Image Include="texture_wood.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

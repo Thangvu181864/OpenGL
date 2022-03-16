@@ -24,7 +24,7 @@
     <ClCompile Include="Shader.cpp">
       <Filter>Shader class</Filter>
     </ClCompile>
-    <ClCompile Include="Bai_Tap_7.cpp">
+    <ClCompile Include="Bai_Tap_07.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
