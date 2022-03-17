@@ -156,8 +156,8 @@ int main(void)
 		Trans = glm::scale(Trans, glm::vec3(0.5f, 0.5f, 0.5f)); ///Trans=Trans*glm::vec3(0.5f, 0.5f, 0.5f)
 		//dịch chuyển theo x,y,z lần lượt là 0.0f,-0.5f,0.0f
 		Trans = glm::translate(Trans, glm::vec3(0.0f, 0.5f, 0.0f)); ///Trans=Trans*glm::vec3(0.0f, -0.5f,0.0f)
-		// roate 90 độ quanh trục y
-		Trans = glm::rotate(Trans, (float)glfwGetTime() / 5.0f, glm::vec3(0.0f, 0.0f, 1.0f)); ///Trans=Trans*Rotate
+		// roate 90 độ quanh trục z
+		Trans = glm::rotate(Trans, (float)glfwGetTime() / 2.0f, glm::vec3(0.0f, 0.0f, 1.0f)); ///Trans=Trans*Rotate
 		//dịch chuyển theo x,y,z lần lượt là 0.0f,0.5f,0.0f
 	    Trans = glm::translate(Trans, glm::vec3(0.0f, -0.5f, 0.0f)); ///Trans=Trans*glm::vec3(0.0f, 0.5f,0.0f)
 
