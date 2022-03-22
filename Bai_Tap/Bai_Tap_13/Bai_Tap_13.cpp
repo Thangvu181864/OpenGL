@@ -11,6 +11,9 @@
 //
 #include "Shader.h"
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 // Include GLFW
 #include <GLFW/glfw3.h>
 GLFWwindow* window;
@@ -20,11 +23,10 @@ GLFWwindow* window;
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-
 //function
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 
-const GLuint WIDTH = 1200, HEIGHT = 1000;
+const GLuint WIDTH = 1000, HEIGHT = 1000;
 
 
 int main(void)
@@ -69,11 +71,19 @@ int main(void)
 
 	//bước 1: khai báo vertex input (vertex data)
 	GLfloat vertices[] = {
-		// hinh tam giac
-		   //position             //color          //texture
-		-0.5f, -0.5f, 0.0f,   0.0f,0.0f,1.0f,      0.0f,0.0f,   // Bottom Left
-		0.5f, -0.5f, 0.0f,    0.0f,1.0f,0.0f,	   0.5f,0.0f,   // Bottom Right
-		0.0f, 0.5f, 0.0f,     1.0f,0.0f,0.0f,	   0.25f,0.5f,   // Top
+		//position             //color          //texture
+	 -0.25f, -0.5f, 0.0f,   0.0f,1.0f,1.0f,      0.0f,0.0f, //0
+	 0.25f, 0.0f, 0.0f,     0.0f,1.0f,1.0f,	     1.0f,0.5f, //1
+	 0.25f, 0.5f, 0.0f,     0.0f,1.0f,1.0f,	     1.0f,1.0f, //2
+	 -0.25f, 0.5f, 0.0f,    0.0f,1.0f,1.0f,      0.0f,1.0f, //3
+	};
+
+
+	GLuint indices[] = { // Note that we start from 0!
+
+		0, 1, 3, // First Triangle
+		1, 2, 3, // Second Triangle
+
 	};
 	//Bước 2: Khởi tạo VBO, VAO
 		//b2.1 VAO
@@ -82,6 +92,10 @@ int main(void)
 	//b2.2 VBO
 	GLuint VBO;
 	glGenBuffers(1, &VBO);
+	//b2.3 EBO
+	GLuint EBO;
+	glGenBuffers(1, &EBO);
+
 	// initialization code
 	// 1. Bind Vertex Array Object
 	glBindVertexArray(VAO);
@@ -89,6 +103,8 @@ int main(void)
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	// 3. Copy our index array in a element buffer for OpenGL to use
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 	// 3.1 Then set the vertex attributes pointers
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
 	glEnableVertexAttribArray(0);
@@ -96,7 +112,6 @@ int main(void)
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2);
-
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	// 4. Unbind VAO (Not the EBO)
 	glBindVertexArray(0);
@@ -151,24 +166,30 @@ int main(void)
 
 		///xác định ma trận biến đổi (các bạn muốn biến đổi đối tượng như nào )
 		glm::mat4 Trans = glm::mat4(1.0f);
-
 		// scale nhỏ đi 0.5 lần     
 		Trans = glm::scale(Trans, glm::vec3(0.5f, 0.5f, 0.5f)); ///Trans=Trans*glm::vec3(0.5f, 0.5f, 0.5f)
-		//dịch chuyển theo x,y,z lần lượt là 0.0f,-0.5f,0.0f
-		Trans = glm::translate(Trans, glm::vec3(0.5f, 0.5f, 0.0f)); ///Trans=Trans*glm::vec3(0.0f, -0.5f,0.0f)
-		// roate 90 độ quanh trục z
-		Trans = glm::rotate(Trans, (float)glfwGetTime() / 2.0f, glm::vec3(0.0f, 0.0f, 1.0f)); ///Trans=Trans*Rotate
-		//dịch chuyển theo x,y,z lần lượt là 0.0f,0.5f,0.0f
-	    Trans = glm::translate(Trans, glm::vec3(0.0f, -0.5f, 0.0f)); ///Trans=Trans*glm::vec3(0.0f, 0.5f,0.0f)
 
 		////Tìm vị trí của uniform tên là "transform" trong Shader Programe là "ourShader"
 		GLuint UniformLocation_Transform = glGetUniformLocation(ourShader.IDProgram, "transform");
-		//sau có khi có vị trí uniform,
-		glUniformMatrix4fv(UniformLocation_Transform, 1, GL_FALSE, glm::value_ptr(Trans));
+		
+		
 
 		ourShader.use();
 		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		for (int i = 0; i < 4; i++)
+		{
+			//dịch chuyển theo x,y,z lần lượt là -0.25f, -0.5f,0.0f
+			Trans = glm::translate(Trans, glm::vec3(-0.25f, -0.5f, 0.0f)); ///Trans=Trans*glm::vec3(0.25f, 0.5f,0.0f)
+			// roate 90 độ quanh trục z
+			GLfloat rotate = (float) i * M_PI/2;
+			Trans = glm::rotate(Trans, rotate, glm::vec3(0.0f, 0.0f, 1.0f)); ///Trans=Trans*Rotate
+			//dịch chuyển theo x,y,z lần lượt là 0.25f, 0.5f,0.0f
+			Trans = glm::translate(Trans, glm::vec3(0.25f, 0.5f, 0.0f)); ///Trans=Trans*glm::vec3(0.25f, 0.5f,0.0f)
+
+			//sau có khi có vị trí uniform,
+			glUniformMatrix4fv(UniformLocation_Transform, 1, GL_FALSE, glm::value_ptr(Trans));
+			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		}
 		glBindVertexArray(0);
 
 		///swap
@@ -182,7 +203,6 @@ int main(void)
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
 	std::cout << key << std::endl;
-	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
-	}
 }
